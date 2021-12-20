@@ -1,0 +1,19 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '~primeicons/primeicons.css';
+@import '~primeng/resources/primeng.min.css';
+html, body { height: 100%; margin-top: 150px !important; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@layer base {
+  @import '01-base/font.scss';
+  @import '01-base/document.scss';
+  @import '01-base/headings.scss';
+}
+
+@layer components {
+  @import '02-components/link.scss';
+}
+
+@layer utilities {
+}

@@ -1,0 +1,88 @@
+
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <!-- component -->
+  <p-toast
+    [breakpoints]="{'920px': {width: '100%', right: '0', left: '0'}}"
+  ></p-toast>
+  <div class="flex flex-col min-h-screen bg-grey-lighter">
+    <div
+      class="container flex flex-col items-center justify-center flex-1 max-w-sm px-2 mx-auto "
+    >
+      <div class="w-full px-6 py-8 text-black bg-white rounded shadow-md">
+        <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+        <tui-input
+          class="block w-full p-3 mb-4 border rounded b-form border-grey-light"
+          tuiHintContent="Type 5 letters or more"
+          formControlName="userName"
+        >
+          {{ 'fullname' | transloco }}
+        </tui-input>
+
+      <!--   <tui-field-error [control]="signUpForm.controls.userName" formControlName="userName"></tui-field-error> -->
+      <app-validation-message [control]="signUpForm.controls.userName"></app-validation-message>
+
+        <tui-input
+          class="block w-full p-3 mb-4 border rounded border-grey-light"
+          formControlName="email"
+        >
+          Type a Email ID
+        </tui-input>
+        <tui-field-error formControlName="email"></tui-field-error>
+        <tui-input-password
+          class="block w-full p-3 mb-4 border rounded b-form border-grey-light"
+          tuiHintContent="Type 5 letters or more"
+          formControlName="password"
+        >
+          Type a Password
+        </tui-input-password>
+        <tui-field-error formControlName="password"></tui-field-error>
+
+        <tui-input-password
+          class="block w-full p-3 mb-4 border rounded b-form border-grey-light"
+          tuiHintContent="Type 5 letters or more"
+          formControlName="cpassword"
+        >
+          Type a confirm password
+        </tui-input-password>
+        <tui-field-error formControlName="cpassword"></tui-field-error>
+        <button
+          tuiButton
+          type="submit"
+          class="w-full py-3 my-1 text-center text-white rounded tui-space_right-3 tui-space_bottom-3 bg-green hover:bg-green-dark focus:outline-none"
+          appearance="primary"
+          [disabled]="!signUpForm.valid"
+        >
+          Create Account
+        </button>
+        <div class="mt-4 text-sm text-center text-grey-dark">
+          By signing up to FCMPusher, you agree to the
+          <a target="_blank"
+            tuiLink
+            class="no-underline border-b border-grey-dark text-grey-dark"
+            routerLink="https://www.termsandconditionsgenerator.com/live.php?token=tHP5jTL234s51OjHqfdVxc36SbIoEub2"
+          >
+            Terms of Service
+          </a>
+          and
+          <a target="_blank"
+            tuiLink
+            class="no-underline border-b border-grey-dark text-grey-dark"
+            href="https://www.privacypolicygenerator.info/live.php?token=LvlzSKrjrvcjhysMzmYwazv8MBmxpI5H"
+          >
+            Privacy Policy
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-6 text-grey-dark">
+        Already have an account?
+        <a
+          class="no-underline border-b border-blue text-blue"
+          routerLink="/auth/sign-in"
+        >
+          Log in </a
+        >.
+      </div>
+    </div>
+  </div>
+</form>

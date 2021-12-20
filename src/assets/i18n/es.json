@@ -1,0 +1,9 @@
+{
+  "hello": "transloco en",
+  "dynamic": "transloco {{valor}}",
+  "fullname": "Escriba un nombre completo",
+  "required": "obligatorio",
+  "invalidEmailAddress": "Dirección de correo electrónico no válida",
+  "invalidPassword": "Contraseña no válida. La contraseña debe tener al menos 6 caracteres y contener un número.",
+  "minlength": "Longitud mínima {{valor}}"
+}

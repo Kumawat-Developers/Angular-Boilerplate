@@ -1,0 +1,13 @@
+
+<tui-theme-night *ngIf="isDark"></tui-theme-night>
+ <tui-root>
+<app-layout>
+
+  <router-outlet></router-outlet>
+</app-layout>
+
+<ng-template #notAuthorized>
+  <router-outlet></router-outlet>
+</ng-template>
+
+</tui-root>

@@ -1,0 +1,48 @@
+html,
+body {
+  @apply h-full;
+}
+
+body {
+  margin-top: 150px;
+  @apply bg-gray-100;
+  @apply text-gray-800;
+
+  &.dark {
+    @apply bg-gray-800;
+    @apply text-gray-50;
+
+  }
+
+}
+input{
+  &.dark {
+    @apply bg-gray-800;
+
+
+  }
+}
+/* :root {
+  --primary-color: #302AE6;
+  --secondary-color: #536390;
+  --font-color: #424242;
+  --bg-color: #f5f500 !important;
+  --heading-color: #1E5128 !important;
+}
+ */
+/* .dark {
+  --primary-color: #9A97F3;
+  --secondary-color: #818cab;
+  --font-color: #e1e1ff;
+  --bg-color: #f5f500 !important;
+  --heading-color: #8E05C2 !important;
+}
+
+input, textarea{
+ background-color: var(--heading-color) !important;
+}
+::-webkit-input-placeholder{
+ color: var(--bg-color) !important;
+}
+
+ */

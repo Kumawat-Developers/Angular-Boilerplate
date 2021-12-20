@@ -1,0 +1,16 @@
+.box {
+  position:inherit;
+}
+.bet_time {
+  position:absolute;
+  right:0;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  z-index: 102;
+  align-items: center;
+  text-align: center;
+}

@@ -1,0 +1,9 @@
+{
+  "hello": "transloco en",
+  "dynamic": "transloco {{value}}",
+  "fullname": "पूरा नाम टाइप करें",
+  "required": "आवश्यक",
+  "invalidEmailAddress": "अमान्य ईमेल पता",
+  "invalidPassword": "अमान्य पासवर्ड। पासवर्ड कम से कम 6 वर्णों का होना चाहिए, और उसमें एक संख्या होनी चाहिए।",
+  "minlength": "न्यूनतम लंबाई {{value}}"
+}

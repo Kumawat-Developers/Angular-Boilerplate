@@ -1,0 +1,173 @@
+<p-toast></p-toast>
+
+<div class="card">
+  <p-toolbar styleClass="p-mb-4 " class="mx-5">
+    <ng-template pTemplate="left">
+      <h1 class="text-gray-600">All FCMPusher APP</h1>
+    </ng-template>
+
+    <ng-template pTemplate="right"> </ng-template>
+  </p-toolbar>
+  <p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+      <button
+      pButton
+      title="Back"
+      icon="pi pi-chevron-left"
+      class="mx-1 p-button-outlined"
+      (click)="back()"
+    ></button>
+      <button
+        pButton
+        pRipple
+        label="New Product"
+        icon="pi pi-plus"
+        class="p-button-success p-button-outlined p-mr-2"
+        (click)="newUser()"
+      ></button>
+    </ng-template>
+
+    <ng-template pTemplate="right"> </ng-template>
+  </p-toolbar>
+
+  {{ products.length }}
+  <p-table
+    #dt
+    [value]="products"
+    [rows]="10"
+    [paginator]="true"
+    [(selection)]="selectedProducts"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+    *ngIf="products?.length > 0"
+  >
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <h5 class="p-m-0">Manage Product</h5>
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal($event.target, 'contains')"
+            placeholder="Search..."
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr class="cursor-pointer" style="cursor: pointer">
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <!--      <th pSortableColumn="id">Product Id <p-sortIcon field="id"></p-sortIcon>
+                </th> -->
+        <th pSortableColumn="productName">
+          Product Name <p-sortIcon field="productName"></p-sortIcon>
+        </th>
+        <!--   <th pSortableColumn="user">user Id <p-sortIcon field="user"></p-sortIcon>
+                </th>
+                <th pSortableColumn="organization">organization Id <p-sortIcon field="organization"></p-sortIcon>
+                </th> -->
+        <th pSortableColumn="isActive">
+          Active <p-sortIcon field="isActive"></p-sortIcon>
+        </th>
+        <th pSortableColumn="isDeleted">
+          Deleted<p-sortIcon field="isDeleted"></p-sortIcon>
+        </th>
+        <th class="px-2" style="padding-left: 36px">Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr
+        (click)="onClick(user)"
+        class="cursor-pointer"
+        style="cursor: pointer"
+      >
+        <td>
+          <p-tableCheckbox [value]="products"></p-tableCheckbox>
+        </td>
+
+        <!--    <td>{{user.id}}</td> -->
+        <td>{{ user.productName }}</td>
+        <!--     <td>{{user.user}}</td>
+                <td>{{user.organization}}</td> -->
+        <td>{{ user.isActive }}</td>
+        <td>{{ user.isDeleted }}</td>
+
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            class="mx-2 p-button-rounded p-button-success p-mr-1"
+            (click)="editUser(user)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-warning"
+            (click)="deleteUser(user)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{ products ? products.length : 0 }} organization.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog
+  [(visible)]="userDialog"
+  [style]="{ width: '450px' }"
+  header="Product Details"
+  [modal]="true"
+  styleClass="p-fluid"
+>
+  <ng-template pTemplate="content">
+    <div class="p-field">
+      <label for="productName">Product Name</label>
+      <input
+        type="text"
+        pInputText
+        id="productName"
+        [(ngModel)]="newProduct.productName"
+        required
+        autofocus
+      />
+      <small class="p-invalid" *ngIf="submitted && !newProduct.productName"
+        >productName is required.</small
+      >
+    </div>
+
+
+
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      label="Cancel"
+      icon="pi pi-times"
+      class="p-button-text"
+      (click)="hideUserDialog()"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="Save"
+      icon="pi pi-check"
+      class="p-button-text"
+      (click)="saveUser()"
+    ></button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
